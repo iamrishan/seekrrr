@@ -35,7 +35,7 @@ function App() {
 				onChange={e => setSearch(e.target.value)}
 				/>
 			</form>
-				{(searchInfo.totalhits) ? <p>Search Resuls: {searchInfo.totalhits}</p> : ''}
+				{(searchInfo.totalhits) ? <p class="totalhits">Search Resuls: {searchInfo.totalhits}</p> : ''}
 			</header>
 			<div className="results">
 				{results.map((result, i) => {
