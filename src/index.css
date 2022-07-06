@@ -53,19 +53,22 @@ input {
   }
 
 .search-box{
-  background-color: #fff;
+  background-color: #fff !important;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 16px;
   overflow: hidden;
   width: 100%;
-  max-width: 480px;
+  max-width: 90%;
   margin-bottom: 16px;
   transition: 0.4s;
+  margin: 0 32px;
+  margin-bottom: 32px;
 }
 
 .search-box input{
+  background-color: #fff !important;
   display: block;
   appearance: none;
   outline: none;
