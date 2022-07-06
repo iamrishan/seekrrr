@@ -1,10 +1,19 @@
+@media (prefers-color-scheme: dark) {
+  .day.dark-scheme   { background:  #333; color: white; }
+  .night.dark-scheme { background: black; color:  #ddd; }
+}
+
+@media (prefers-color-scheme: light) {
+  .day.light-scheme   { background: white; color:  #555; }
+  .night.light-scheme { background:  #eee; color: black; }
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
 
 body{
   background-color: #eee;
@@ -22,6 +31,7 @@ body{
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #bababa;
 }
+
 
 .App{
   display: flex;
@@ -110,14 +120,14 @@ input {
 }
 
 .result p{
-  color: #313131;
+  color: #888;
   font-size: 18px;
   margin-bottom: 16px;
 }
 
 .result p .searchmatch{
   font-weight: 700;
-  color: #a84fff;
+  color: #aaaaff;
 }
 
 .result a{
