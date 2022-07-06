@@ -10,7 +10,6 @@ function App() {
     if (search === "") return;
 
     const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${search}`;
-
     const response = await fetch(endPoint);
 
     if (!response.ok) {
@@ -18,15 +17,15 @@ function App() {
     }
 
     const json = await response.json();
-
     setResults(json.query.search);
     setSearchInfo(json.query.searchinfo);
   };
 
-  return (
+  const totalresults = searchInfo.totalhits;
+    return (
     <div className="App">
       <header>
-        <h1>seek.rrr</h1>
+        <h1>Seek.rrr</h1>
         <form className="search-box" onSubmit={handleSearch}>
           <input
             type="search"
@@ -35,8 +34,8 @@ function App() {
             onChange={(e) => setSearch(e.target.value)}
           />
         </form>
-        {searchInfo.totalhits ? (
-          <p class="totalhits">Search Resuls: {searchInfo.totalhits}</p>
+        {totalresults ? (
+          <p class="totalhits"> {totalresults} results found!</p>
         ) : (
           ""
         )}
@@ -50,7 +49,7 @@ function App() {
               <h3>{result.title}</h3>
               <p dangerouslySetInnerHTML={{ __html: result.snippet }}></p>
               <a href={url} target="_blank" rel="noreferrer">
-                Read more
+                Read more >
               </a>
             </div>
           );
