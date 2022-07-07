@@ -20,6 +20,7 @@ function App() {
     const json = await response.json();
     setResults(json.query.search);
     setSearchInfo(json.query.searchinfo);
+
   };
 
   const totalresults = searchInfo.totalhits;
@@ -35,7 +36,13 @@ function App() {
     window.location = 'https://iamrishan.github.io/seekrrr';
 }
 
-
+const nextPage = async (e) => {
+  const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=40&srsearch=${search}`;
+  const response = await fetch(endPoint);
+  const json = await response.json();
+  setResults(json.query.search);
+  setSearchInfo(json.query.searchinfo);
+};
     return (
     <div className="App">
       <header>
@@ -70,6 +77,7 @@ function App() {
           );
         })}
       </div>
+      {totalresults ? (<div className="pagination" onClick={nextPage}>Load more > </div>) : ("")}
     </div>
   );
 }

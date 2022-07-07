@@ -17,19 +17,33 @@ body {
   background-color: #fff;
 }
 
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
+a{
+  text-decoration: none;
+  outline: none;
+}
+
+::-webkit-input-placeholder{
   color: #acacac;
-  opacity: 1; /* Firefox */
+}
+
+::-moz-placeholder{
+  color: #acacac;
+}
+
+:-moz-placeholder{
+  color: #acacac;
+}
+
+::placeholder {
+  color: #acacac;
+  opacity: 1;
 }
 
 :-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
   color: #acacac;
 }
 
 ::-ms-input-placeholder {
-  /* Microsoft Edge */
   color: #acacac;
 }
 
@@ -60,6 +74,8 @@ h1 {
 input {
   font-size: 18px !important;
   color: #333;
+  -webkit-text-fill-color: #333;
+  opacity: 0.9;
 }
 
 .search-box {
@@ -157,4 +173,13 @@ input {
 
 .result a:hover {
   transform: translatex(5px);
+}
+.pagination{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  color: #0d58ff;
 }
