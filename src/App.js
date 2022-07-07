@@ -7,6 +7,7 @@ function App() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    document.getElementById("search").blur();
     if (search === "") return;
 
     const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${search}`;
@@ -22,20 +23,34 @@ function App() {
   };
 
   const totalresults = searchInfo.totalhits;
+  function numberWithCommas(x) {
+    x = x.toString();
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x)) x = x.replace(pattern, "$1,$2");
+    return x;
+  }
+
+  function home(e) {
+    e.preventDefault();
+    window.location = 'https://iamrishan.github.io/seekrrr';
+}
+
+
     return (
     <div className="App">
       <header>
-        <h1>Seek.rrr</h1>
+        <h1 onClick={home}>Seek.rrr</h1>
         <form className="search-box" onSubmit={handleSearch}>
           <input
             type="search"
+            id="search"
             placeholder="What are you seeking for?"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </form>
         {totalresults ? (
-          <p class="totalhits"> {totalresults} results found!</p>
+          <p class="totalhits"> {numberWithCommas(totalresults)} results found!</p>
         ) : (
           ""
         )}

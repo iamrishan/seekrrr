@@ -11,22 +11,23 @@
 
 body {
   background-color: #fff;
+  overflow: hidden;
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #fff;
+  color: #acacac;
   opacity: 1; /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #fff;
+  color: #acacac;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: #fff;
+  color: #acacac;
 }
 
 .App {
@@ -45,6 +46,7 @@ header {
 }
 
 h1 {
+  cursor: pointer;
   color: #0d58ff;
   opacity: 0.9;
   font-size: 48px;
@@ -54,7 +56,7 @@ h1 {
 
 input {
   font-size: 18px !important;
-  color: #fff;
+  color: #333;
 }
 
 .search-box {
@@ -77,8 +79,7 @@ input {
 }
 
 .search-box input {
-  background-color: #0d58ff !important;
-  opacity: 0.9;
+  background-color: #e8f0fe !important;
   display: block;
   appearance: none;
   outline: none;
