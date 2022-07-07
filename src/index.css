@@ -12,6 +12,7 @@
 body {
   background-color: #fff;
   overflow: hidden;
+  height: 100%;
 }
 
 ::placeholder {
