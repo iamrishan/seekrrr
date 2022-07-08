@@ -77,7 +77,7 @@ const nextPage = async (e) => {
           );
         })}
       </div>
-      {totalresults ? (<div className="pagination" onClick={nextPage}>Load more > </div>) : ("")}
+      {totalresults ? (<div className="pagination" onClick={nextPage}>Load more ></div>) : ("")}
     </div>
   );
 }
