@@ -6,6 +6,11 @@ function App() {
   const [searchInfo, setSearchInfo] = useState({});
 
   const handleSearch = async (e) => {
+    window.scroll({
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth'
+    });
     e.preventDefault();
     document.getElementById("search").blur();
     if (search === "") return;
