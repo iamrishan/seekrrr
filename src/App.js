@@ -6,9 +6,8 @@ function App() {
   const [searchInfo, setSearchInfo] = useState({});
 
   const handleSearch = async (e) => {
-    window.scrollTo(0, 0);
     e.preventDefault();
-
+    document.getElementById("search").blur();
     if (search === "") return;
 
     const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${search}`;
