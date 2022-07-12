@@ -1,6 +1,6 @@
 This project was made using ReactJS
 
-here is the live version: (https://iamrishan.com/seekrrr/)
+here is the live version: (https://iamrishan.github.io/seekrrr/)
 
 To run this on your localhost you need to install [Node.JS] first.
 (https://nodejs.org/en/)
