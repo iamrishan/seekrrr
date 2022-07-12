@@ -9,6 +9,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  -ms-content-zooming: none;
+  -ms-touch-action: pan-x pan-y;
+
+}
+
 body {
   background-color: #fff;
 }
