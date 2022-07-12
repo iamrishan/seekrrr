@@ -9,10 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html,body{
-  overflow-y: scroll;
-}
-
 body {
   background-color: #fff;
 }
@@ -52,6 +48,7 @@ a{
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  height: 100%;
 }
 
 header {
