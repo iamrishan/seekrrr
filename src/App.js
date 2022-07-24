@@ -20,7 +20,6 @@ function App() {
     const json = await response.json();
     setResults(json.query.search);
     setSearchInfo(json.query.searchinfo);
-
   };
 
   const totalresults = searchInfo.totalhits;
@@ -33,19 +32,31 @@ function App() {
 
   function home(e) {
     e.preventDefault();
-    window.location = 'https://iamrishan.github.io/seekrrr';
-}
+    window.location = "https://iamrishan.github.io/seekrrr";
+  }
 
-const nextPage = async (e) => {
-  const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=40&srsearch=${search}`;
-  const response = await fetch(endPoint);
-  const json = await response.json();
-  setResults(json.query.search);
-  setSearchInfo(json.query.searchinfo);
-};
-    return (
+  const nextPage = async (e) => {
+    const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=40&srsearch=${search}`;
+    const response = await fetch(endPoint);
+    const json = await response.json();
+    setResults(json.query.search);
+    setSearchInfo(json.query.searchinfo);
+  };
+  return (
     <div className="App">
       <header>
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
         <h1 onClick={home}>Seek.rrr</h1>
         <form className="search-box" onSubmit={handleSearch}>
           <input
@@ -57,7 +68,10 @@ const nextPage = async (e) => {
           />
         </form>
         {totalresults ? (
-          <p class="totalhits"> {numberWithCommas(totalresults)} results found!</p>
+          <p class="totalhits">
+            {" "}
+            {numberWithCommas(totalresults)} results found!
+          </p>
         ) : (
           ""
         )}
@@ -71,13 +85,19 @@ const nextPage = async (e) => {
               <h3>{result.title}</h3>
               <p dangerouslySetInnerHTML={{ __html: result.snippet }}></p>
               <a href={url} target="_blank" rel="noreferrer">
-                Read more >
+                Read more <i class="fa fa-chevron-right" aria-hidden="true"></i>
               </a>
             </div>
           );
         })}
       </div>
-      {totalresults ? (<div className="pagination" onClick={nextPage}>Load more ></div>) : ("")}
+      {totalresults ? (
+        <div className="pagination" onClick={nextPage}>
+          Load more <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
