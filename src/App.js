@@ -1,9 +1,18 @@
 import { useState } from "react";
+import {
+  FaAngleRight,
+  FaAngleDown,
+  FaCog,
+  FaSearch,
+  FaTimes,
+} from "react-icons/fa";
 
 function App() {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [searchInfo, setSearchInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setTyping] = useState(true);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -23,6 +32,7 @@ function App() {
   };
 
   const totalresults = searchInfo.totalhits;
+
   function numberWithCommas(x) {
     x = x.toString();
     var pattern = /(-?\d+)(\d{3})/;
@@ -35,12 +45,20 @@ function App() {
     window.location = "https://iamrishan.github.io/seekrrr";
   }
 
+  function handleClear() {
+    const searchBox = document.getElementById("search");
+    searchBox.value = "";
+    searchBox.focus();
+  }
+
   const nextPage = async (e) => {
+    setIsLoading(true);
     const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=40&srsearch=${search}`;
     const response = await fetch(endPoint);
     const json = await response.json();
     setResults(json.query.search);
     setSearchInfo(json.query.searchinfo);
+    setIsLoading(false);
   };
   return (
     <div className="App">
@@ -57,8 +75,11 @@ function App() {
           <li></li>
           <li></li>
         </ul>
-        <h1 onClick={home}>Seek.rrr</h1>
+        <h1 onClick={home}>
+          Seek.r<sup>3</sup>
+        </h1>
         <form className="search-box" onSubmit={handleSearch}>
+          <FaSearch className="searchIcon" size={20} color="#acacac" />
           <input
             type="search"
             id="search"
@@ -66,6 +87,16 @@ function App() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+          {isTyping ? (
+            <FaTimes
+              onClick={handleClear}
+              className="clearIcon"
+              size={20}
+              color="#4e54c8"
+            />
+          ) : (
+            ""
+          )}
         </form>
         {totalresults ? (
           <p class="totalhits">
@@ -85,7 +116,7 @@ function App() {
               <h3>{result.title}</h3>
               <p dangerouslySetInnerHTML={{ __html: result.snippet }}></p>
               <a href={url} target="_blank" rel="noreferrer">
-                Read more <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                Read more <FaAngleRight />
               </a>
             </div>
           );
@@ -93,7 +124,8 @@ function App() {
       </div>
       {totalresults ? (
         <div className="pagination" onClick={nextPage}>
-          Load more <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          Load more&nbsp;
+          {isLoading ? <FaCog className="loaderIcon" /> : <FaAngleDown />}
         </div>
       ) : (
         ""
