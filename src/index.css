@@ -225,7 +225,7 @@ h1 {
 }
 
 input {
-  font-size: 18px !important;
+  font-size: 22px !important;
   color: #333;
   opacity: 0.9;
 }
@@ -247,8 +247,21 @@ input {
 }
 
 @media screen and (max-width: 768px) {
+  html {
+    height: 100vh;
+  }
+  body {
+    height: 100vh;
+  }
+  .App {
+    height: 100vh;
+  }
+
   .search-box {
     max-width: 85%;
+  }
+  input {
+    font-size: 16px !important;
   }
 }
 
