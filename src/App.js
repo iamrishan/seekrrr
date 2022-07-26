@@ -17,14 +17,11 @@ function App() {
     e.preventDefault();
     document.getElementById("search").blur();
     if (search === "") return;
-
     const endPoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${search}`;
     const response = await fetch(endPoint);
-
     if (!response.ok) {
       throw Error(response.statusText);
     }
-
     const json = await response.json();
     setResults(json.query.search);
     setSearchInfo(json.query.searchinfo);
@@ -60,6 +57,7 @@ function App() {
     setSearchInfo(json.query.searchinfo);
     setIsLoading(false);
   };
+
   return (
     <div className="App">
       <header>
@@ -107,7 +105,6 @@ function App() {
       <div className="results">
         {results.map((result, i) => {
           const url = `https://en.wikipedia.org/?curid=${result.pageid}`;
-
           return (
             <div className="result" key={i}>
               <h3>{result.title}</h3>
