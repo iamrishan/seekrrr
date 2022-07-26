@@ -12,7 +12,6 @@ function App() {
   const [results, setResults] = useState([]);
   const [searchInfo, setSearchInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isTyping, setTyping] = useState(true);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -49,6 +48,7 @@ function App() {
     const searchBox = document.getElementById("search");
     searchBox.value = "";
     searchBox.focus();
+    setSearch("");
   }
 
   const nextPage = async (e) => {
@@ -87,13 +87,10 @@ function App() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          {isTyping ? (
-            <FaTimes
-              onClick={handleClear}
-              className="clearIcon"
-              size={20}
-              color="#4e54c8"
-            />
+          {search ? (
+            <div onClick={handleClear} className="clearIcon">
+              <FaTimes size={20} color="#4e54c8" />
+            </div>
           ) : (
             ""
           )}
