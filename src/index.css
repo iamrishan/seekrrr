@@ -152,16 +152,18 @@ header {
 h1 {
   font-family: "Zen Dots", sans-serif !important;
   text-align: center;
-  cursor: pointer;
+
   color: #fff;
   font-size: 42px;
   margin-bottom: 24px;
   text-transform: uppercase;
 }
+.title {
+  cursor: pointer;
+}
 
 /* SEARCH BOX */
 .search-box {
-  cursor: pointer;
   background-color: #e8f0fe;
   display: flex;
   align-items: center;
@@ -206,9 +208,15 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 25px;
-  overflow: hidden;
+  padding: 20px;
   cursor: pointer;
+  transition: 0.4s;
+  animation: spin 1s;
+}
+
+.clearIcon:hover {
+  transition: 0.4s;
+  transform: scale(1.2);
 }
 
 input[type="search"]::-ms-clear {
@@ -354,7 +362,7 @@ input[type="search"]::-webkit-search-results-decoration {
   .search-box {
     max-width: 85%;
   }
-  input {
+  .search-box input {
     font-size: 16px !important;
   }
 }

@@ -73,9 +73,11 @@ function App() {
           <li></li>
           <li></li>
         </ul>
-        <h1 onClick={home}>
-          Seek.r<sup>3</sup>
-        </h1>
+        <div className="title" onClick={home}>
+          <h1>
+            Seek.r<sup>3</sup>
+          </h1>
+        </div>
         <form className="search-box" onSubmit={handleSearch}>
           <FaSearch className="searchIcon" size={20} color="#acacac" />
           <input
